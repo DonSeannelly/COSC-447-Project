@@ -5,12 +5,10 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { QueryService } from './query.service';
-import { G3TableComponent } from './g3-table/g3-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    G3TableComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
