@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { QueryService } from './query.service';
 import { ActsComponent } from './acts/acts.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ActsComponent
+    ActsComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
