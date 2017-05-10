@@ -13,8 +13,5 @@ export class AppComponent {
   constructor(qs: QueryService) {
     //The QueryService makes an HTTP request to the api, 
     //and we subscribe this.result to the observable result that comes in
-    this.result = qs.dummyGet().subscribe(result => {
-      this.result = result;
-    });
   }
 }

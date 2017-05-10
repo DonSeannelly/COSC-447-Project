@@ -1,0 +1,34 @@
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th>Name</th><th>Email</th><th>Genre</th><th>City</th><th>State</th><th>Actions</th>
+    </tr>
+    <tr *ngFor="let a of acts; let i = index">
+      <td>
+        <p *ngIf="editID != i">{{a.name}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.name"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.email}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.email"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.genre}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.genre"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.city}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.city"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.state}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.state"/>
+      </td>
+      <td>
+        <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
+        <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
+        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

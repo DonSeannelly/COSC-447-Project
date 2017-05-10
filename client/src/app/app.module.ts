@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { QueryService } from './query.service';
+import { ActsComponent } from './acts/acts.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ActsComponent
   ],
   imports: [
     BrowserModule,
