@@ -607,9 +607,9 @@ pool.acquire(function (err, connection) {
 
     // TICKETS
     // TODO get tickets for a specific act at a given show
-    router.get('/ticket/:act_id', function (req, res) {
-        var actID = req.params['act_id'];
-        var request = new Request('SELECT * FROM Tickets WHERE Act_ID = ' + actID + ';',
+    router.get('/ticket/:show_id', function (req, res) {
+        var showID = req.params['show_id'];
+        var request = new Request('SELECT * FROM Tickets WHERE Show_ID = ' + showID + ';',
             function (err, rowCount, rows) {
                 if (err) {
                     console.log(err);
