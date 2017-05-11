@@ -27,7 +27,7 @@
       </td>
       <td>
         <p *ngIf="editID != i">{{c.PromoterCost}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="s.EndTime"/>
+        <input *ngIf="editID == i" [(ngModel)]="c.EndTime"/>
       </td>
       <td>
         <p *ngIf="editID != i">{{c.BandPayout}}</p>
@@ -36,7 +36,7 @@
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
         <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
-        <button class="btn btn-danger" (click)="remove(s.showID, i)">Delete</button>
+        <button class="btn btn-danger" (click)="remove(i, c.showID )">Delete</button>
       </td>
     </tr>
   </tbody>

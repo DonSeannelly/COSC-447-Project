@@ -14,6 +14,7 @@ import { ShowsComponent } from './shows/shows.component';
 import {TicketComponent} from './ticket/ticket.component';
 import {ToursComponent} from './tours/tours.component';
 import {VenueComponent} from './venue/venue.component';
+import {CostsComponent} from './costs/costs.component';
 
 import {ActService} from './acts/acts.service';
 import {EmployeeService} from './employee/employee.service';
@@ -25,6 +26,7 @@ import {TicketService} from './ticket/tickets.service';
 import {ToursService} from './tours/tours.service';
 import {VenueService} from './venue/venue.service';
 import {QueryService} from './query.service';
+import {CostsService} from './costs/costs.service';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,8 @@ import {QueryService} from './query.service';
         TicketComponent,
         ToursComponent,
         VenueComponent,
-        ShowsComponent
+        ShowsComponent,
+        CostsComponent
     ],
     imports: [
         BrowserModule,
@@ -55,7 +58,8 @@ import {QueryService} from './query.service';
         TicketService,
         ToursService,
         VenueService,
-        ShowsService
+        ShowsService,
+        CostsService
     ],
     bootstrap: [AppComponent]
 })

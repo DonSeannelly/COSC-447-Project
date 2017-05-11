@@ -12,7 +12,7 @@ export class CostsComponent implements OnInit {
   editID: number = -1;
 
   constructor(public costsService: CostsService) { 
-    this.costs = CostsService.get();
+    this.costs = costsService.get();
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class CostsComponent implements OnInit {
     this.costsService.update(this.costs[index]).subscribe();
   }
 
-  remove(id: number, index: number) {
+  remove(index: number, id:number) {
     this.costs.splice(index, 1);
     this.costsService.remove(id).subscribe();
   }
