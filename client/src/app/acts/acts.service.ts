@@ -8,8 +8,17 @@ export class ActService implements serviceInterface {
     constructor(private http: Http) {
     }
     get() {
-        return this.http.get('/api/acts')
-            .map(res => res.json());
+        var result = [];
+        var count = 0;
+        this.http.get('/api/acts')
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {actID: temp[0].value, name: temp[1].value, email: temp[2].value,
+                    genre: temp[3].value, city: temp[4].value, state: temp[5].value};
+                count++;
+            }
+        });
+        return result;
     }
     create(record) {
         return this.http.get('/api/act', record)

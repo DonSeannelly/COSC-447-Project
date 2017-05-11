@@ -12,8 +12,9 @@ export class ActsComponent implements OnInit {
   acts: Act[];
   editID: number = -1;
 
-  constructor(public actService: ActService) { 
+  constructor(private actService: ActService) {
     this.acts = actService.get();
+    console.log(this.acts);
   }
 
   ngOnInit() {
@@ -28,9 +29,9 @@ export class ActsComponent implements OnInit {
     this.actService.update(this.acts[index]);
   }
 
-  remove(index: number) {
+  remove(index: number, id: number) {
     this.acts.splice(index, 1);
-    this.actService.remove(this.acts[index]);
+    this.actService.remove(id);
   }
 
 }

@@ -1,0 +1,50 @@
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th>POC</th><th>Capacity</th><th>Name</th><th>City</th><th>State</th><th>Street</th><th>Zip</th><th>Type</th><th>Time-Open</th><th>Time-Close</th>
+    </tr>
+    <tr *ngFor="let v of venues; let i = index">
+      <td>
+        <p *ngIf="editID != i">{{v.poc}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.poc"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{v.capacity}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.capacity"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{v.name}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.name"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{v.city}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.city"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{v.state}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.state"/>
+      </td>
+	  <td>
+        <p *ngIf="editID != i">{{v.zip}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.zip"/>
+      </td>
+	  <td>
+        <p *ngIf="editID != i">{{v.type}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.type"/>
+      </td>
+	  <td>
+        <p *ngIf="editID != i">{{v.time-Open}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.time-open"/>
+      </td>
+	  <td>
+        <p *ngIf="editID != i">{{v.time-Close}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.time-close"/>
+      </td>
+      <td>
+        <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
+        <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
+        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
