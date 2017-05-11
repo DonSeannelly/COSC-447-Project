@@ -7,8 +7,10 @@ import {PromotersComponent} from './promoter/promoters.component';
 import {ShowsComponent} from './shows/shows.component';
 import {ToursComponent} from './tours/tours.component';
 import {VenueComponent} from './venue/venue.component';
+import {HomepageComponent} from './homepage/homepage.component';
 
 export const routing = RouterModule.forRoot([
+    {path:'', component: HomepageComponent},
     {path:'acts', component: ActsComponent},
     {path:'employee', component: EmployeeComponent},
     {path:'equipment', component: EquipmentComponent},

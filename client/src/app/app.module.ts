@@ -30,6 +30,7 @@ import {QueryService} from './query.service';
 import {CostsService} from './costs/costs.service';
 
 import {routing} from './app.routing';
+import { HomepageComponent } from './homepage/homepage.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -43,7 +44,8 @@ import {routing} from './app.routing';
         VenueComponent,
         ShowsComponent,
         CostsComponent,
-        NavigationComponent
+        NavigationComponent,
+        HomepageComponent
     ],
     imports: [
         BrowserModule,
