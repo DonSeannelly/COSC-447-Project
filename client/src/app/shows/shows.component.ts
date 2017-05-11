@@ -24,12 +24,12 @@ export class EmployeeComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.showsService.update(this.shows[index]);
+    this.showsService.update(this.shows[index]).subscribe();
   }
 
   remove(id: number, index: number) {
     this.shows.splice(index, 1);
-    this.showsService.remove(id);
+    this.showsService.remove(id).subscribe();
   }
 
 }

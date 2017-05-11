@@ -24,12 +24,12 @@ export class VenueComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.venueService.update(this.venues[index]);
+    this.venueService.update(this.venues[index]).subscribe();
   }
 
   remove(index: number) {
     this.venues.splice(index, 1);
-    this.venueService.remove(this.venues[index]);
+    this.venueService.remove(this.venues[index]).subscribe();
   }
 
 }

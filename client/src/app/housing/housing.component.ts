@@ -4,8 +4,7 @@ import { HousingService } from './housing.service';
 
 @Component({
   selector: 'app-housing',
-  templateUrl: './housing.component.html',
-  styleUrls: ['./housing.component.scss']
+  templateUrl: './housing.component.html'
 })
 export class HousingComponent implements OnInit {
 
@@ -25,12 +24,12 @@ export class HousingComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.housingService.update(this.housing[index]);
+    this.housingService.update(this.housing[index]).subscribe();
   }
 
   remove(index: number) {
     this.housing.splice(index, 1);
-    this.housingService.remove(this.housing[index]);
+    this.housingService.remove(this.housing[index]).subscribe();
   }
 
 }

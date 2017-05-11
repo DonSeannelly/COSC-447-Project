@@ -24,12 +24,12 @@ export class ToursComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.tourService.update(this.tours[index]);
+    this.tourService.update(this.tours[index]).subscribe();
   }
 
   remove(index: number) {
     this.tours.splice(index, 1);
-    this.tourService.remove(this.tours[index]);
+    this.tourService.remove(this.tours[index]).subscribe();
   }
 
 }

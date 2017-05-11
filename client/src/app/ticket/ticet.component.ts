@@ -24,12 +24,12 @@ export class TicketComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.ticketService.update(this.tickets[index]);
+    this.ticketService.update(this.tickets[index]).subscribe();
   }
 
   remove(index: number) {
     this.tickets.splice(index, 1);
-    this.ticketService.remove(this.tickets[index]);
+    this.ticketService.remove(this.tickets[index]).subscribe();
   }
 
 }
