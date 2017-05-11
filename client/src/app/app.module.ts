@@ -29,7 +29,7 @@ import {VenueService} from './venue/venue.service';
 import {QueryService} from './query.service';
 import {CostsService} from './costs/costs.service';
 
-
+import {routing} from './app.routing';
 @NgModule({
     declarations: [
         AppComponent,
@@ -49,7 +49,8 @@ import {CostsService} from './costs/costs.service';
         BrowserModule,
         FormsModule,
         HttpModule,
-        ContextMenuModule
+        ContextMenuModule,
+        routing
     ],
     providers: [
         ActService,
