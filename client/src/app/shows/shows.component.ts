@@ -3,16 +3,16 @@ import { Show } from '../models/Show';
 import { ShowsService } from './shows.service';
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html'
+  selector: 'app-shows',
+  templateUrl: './shows.component.html'
 })
-export class EmployeeComponent implements OnInit {
+export class ShowsComponent implements OnInit {
 
   shows: Show[];
   editID: number = -1;
 
-  constructor(public showsService: ShowsService) {
-    //this.shows = showsService.get();
+  constructor(public showService: ShowsService) { 
+    this.shows = showService.get();
   }
 
   ngOnInit() {
@@ -24,12 +24,12 @@ export class EmployeeComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.showsService.update(this.shows[index]).subscribe();
+    this.showService.update(this.shows[index]);
   }
 
   remove(id: number, index: number) {
     this.shows.splice(index, 1);
-    this.showsService.remove(id).subscribe();
+    this.showService.remove(id);
   }
 
 }
