@@ -8,9 +8,19 @@ export class EmployeeService implements serviceInterface {
   constructor(private http: Http) {
   }
   get() {
-    return this.http.get('/api/eployees')
-        .map(res => res.json());
-  }
+        var result = [];
+        var count = 0;
+        this.http.get('/api/ticket')
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {employeeID: temp[0].value, phone: temp[1].value, fname: temp[2].value,
+                    lname: temp[3].value, minit: temp[4].value, zip: temp[5].value, zip: temp[6].value, 
+					state: temp[7].value, city: temp[8].value, street: temp[9].value};
+                count++;
+            }
+        });
+        return result;
+    }
   create(record) {
     return this.http.get('/api/employee', record)
         .map(res => res.json());
