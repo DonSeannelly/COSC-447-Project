@@ -14,8 +14,8 @@ export class EquipmentService implements serviceInterface {
         this.http.get('/api/equipment')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
-                result[count] = {condition: temp[0].value, type: temp[1].value, model: temp[2].value,
-                    equipmentID: temp[3].value, venueID: temp[4].value};
+                result[count] = {equipmentID: temp[0].value, venueID: temp[1].value, condition: temp[2].value,
+                    type: temp[3].value, model: temp[4].value};
                 count++;
             }
         });

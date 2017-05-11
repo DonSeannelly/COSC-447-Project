@@ -1,7 +1,7 @@
 <table class="table table-striped table-bordered table-hover">
   <tbody>
     <tr>
-      <th>Condition</th><th>Type</th><th>Mode</th><th>Equipment ID</th><th>Venue ID</th><th>Actions</th>
+      <th>Condition</th><th>Type</th><th>Model</th><th>Venue ID</th><th>Actions</th>
     </tr>
     <tr *ngFor="let e of equipment; let i = index" [contextMenu]="basicMenu" [contextMenuSubject]="e">
       <td>
@@ -13,12 +13,8 @@
         <input *ngIf="editID == i" [(ngModel)]="e.type"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{e.mode}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.mode"/>
-      </td>
-      <td>
-        <p *ngIf="editID != i">{{e.equipmentID}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.equipmentID"/>
+        <p *ngIf="editID != i">{{e.model}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="e.model"/>
       </td>
       <td>
         <p *ngIf="editID != i">{{e.venueID}}</p>

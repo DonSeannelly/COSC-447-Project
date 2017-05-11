@@ -352,7 +352,7 @@ pool.acquire(function (err, connection) {
     });
 
     router.put('/equipment', function (req, res) {
-        var request = new Request('UPDATE Equpiment SET Ven_ID = @Ven_ID, Condition = @Condition, Type = @Type,' +
+        var request = new Request('UPDATE Equipment SET Ven_ID = @Ven_ID, Condition = @Condition, Type = @Type,' +
             ' Model = @Model WHERE Eqp_ID = @Eqp_ID;',
             function (err) {
                 if (err) {
@@ -806,7 +806,7 @@ pool.acquire(function (err, connection) {
 
     router.put('/venue', function (req, res) {
         var request = new Request('UPDATE Venue SET POC = @POC, Capacity = @Capacity, Name = @Name, City = @City,' +
-            ' State = @State, Street = @Street, ZIP = @ZIP, Type = @Type, Time_Open = @Time_Open, Time_Close = @TimeClose' +
+            ' State = @State, Street = @Street, ZIP = @ZIP, Type = @Type, Time_Open = @Time_Open, Time_Close = @Time_Close ' +
             'WHERE Ven_ID = @Ven_ID;',
             function (err) {
                 if (err) {
@@ -822,8 +822,8 @@ pool.acquire(function (err, connection) {
         request.addParameter('City', TYPES.VarChar, req.body['City']);
         request.addParameter('State', TYPES.VarChar, req.body['State']);
         request.addParameter('Street', TYPES.VarChar, req.body['Street']);
-        request.addParameter('ZIP', TYPES.Int, req.body['ZIP']);
-        request.addParameter('TYPE', TYPES.VarChar, req.body['TYPE']);
+        request.addParameter('Zip', TYPES.Int, req.body['Zip']);
+        request.addParameter('Type', TYPES.VarChar, req.body['Type']);
         request.addParameter('Time_Open', TYPES.Time, req.body['Time_Open']);
         request.addParameter('Time_Close', TYPES.Time, req.body['Time_Close']);
 
