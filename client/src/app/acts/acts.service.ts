@@ -13,8 +13,8 @@ export class ActService implements serviceInterface {
         this.http.get('/api/acts')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
-                result[count] = {Act_ID: temp[0].value, Name: temp[1].value, Email: temp[2].value,
-                    Genre: temp[3].value, City: temp[4].value, State: temp[5].value};
+                result[count] = {actID: temp[0].value, name: temp[1].value, email: temp[2].value,
+                    genre: temp[3].value, city: temp[4].value, state: temp[5].value};
                 count++;
             }
         });
