@@ -4,7 +4,7 @@
       <th>POC</th><th>Capacity</th><th>Name</th><th>City</th><th>State</th><th>Street</th><th>Zip</th><th>Type</th><th>Time-Open</th><th>Time-Close</th>
       <th>Actions</th>
     </tr>
-    <tr *ngFor="let v of venues; let i = index">
+    <tr *ngFor="let v of venues; let i = index" [contextMenu]="basicMenu" [contextMenuSubject]="v">
       <td>
         <p *ngIf="editID != i">{{v.pointOfContact}}</p>
         <input *ngIf="editID == i" [(ngModel)]="v.pointOfContact"/>
@@ -51,5 +51,13 @@
         <button class="btn btn-danger" (click)="remove(i, v.venueID)">Delete</button>
       </td>
     </tr>
+    <context-menu>
+      <ng-template contextMenuItem passive="true">
+        <button class="context-link">View Related Equipment</button>
+      </ng-template>
+      <ng-template contextMenuItem passive="true">
+        <button class="context-link">View Shows</button>
+      </ng-template>
+    </context-menu>
   </tbody>
 </table>

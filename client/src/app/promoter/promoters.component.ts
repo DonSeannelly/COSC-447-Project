@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Promoter } from '../models/Promoter';
 import { PromoterService } from './promoters.service';
+import {ContextMenuComponent} from "ngx-contextmenu";
 
 @Component({
   selector: 'app-promoters',
   templateUrl: './promoters.component.html'
 })
 export class PromotersComponent implements OnInit {
+  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
   promoters: Promoter[];
   editID: number = -1;
 
-  constructor(public promoterService: PromoterService) { 
+  constructor(public promoterService: PromoterService) {
     this.promoters = promoterService.get();
   }
 

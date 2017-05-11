@@ -3,7 +3,7 @@
     <tr>
       <th>Condition</th><th>Type</th><th>Mode</th><th>Equipment ID</th><th>Venue ID</th><th>Actions</th>
     </tr>
-    <tr *ngFor="let e of equipment; let i = index">
+    <tr *ngFor="let e of equipment; let i = index" [contextMenu]="basicMenu" [contextMenuSubject]="e">
       <td>
         <p *ngIf="editID != i">{{e.condition}}</p>
         <input *ngIf="editID == i" [(ngModel)]="e.condition"/>
@@ -30,6 +30,11 @@
         <button class="btn btn-danger" (click)="remove(i, e.equipmentID)">Delete</button>
       </td>
     </tr>
+    <context-menu>
+      <ng-template contextMenuItem passive="true">
+        <button class="context-link">View Related Venue</button>
+      </ng-template>
+    </context-menu>
   </tbody>
 </table>
 

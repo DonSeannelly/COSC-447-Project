@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Employee } from '../models/Employee';
 import { EmployeeService } from './employee.service';
 
@@ -11,7 +11,7 @@ export class EmployeeComponent implements OnInit {
   employees: Employee[];
   editID: number = -1;
 
-  constructor(public employeeService: EmployeeService) { 
+  constructor(public employeeService: EmployeeService) {
     this.employees = employeeService.get();
   }
 

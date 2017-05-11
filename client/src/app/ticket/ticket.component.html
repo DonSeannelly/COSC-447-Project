@@ -3,7 +3,7 @@
     <tr>
       <th>Amount Sold</th><th>Amount Given</th><th>Price</th>
     </tr>
-    <tr *ngFor="let t of tickets; let i = index">
+    <tr *ngFor="let t of tickets; let i = index" [contextMenu]="basicMenu" [contextMenuSubject]="t">
       <td>
         <p *ngIf="editID != i">{{t.amountsold}}</p>
         <input *ngIf="editID == i" [(ngModel)]="t.amountsold"/>
@@ -22,5 +22,10 @@
         <button class="btn btn-danger" (click)="remove(i, t.showID)">Delete</button>
       </td>
     </tr>
+    <context-menu>
+      <ng-template contextMenuItem passive="true">
+        <button class="context-link">View Related Shows</button>
+      </ng-template>
+    </context-menu>
   </tbody>
 </table>

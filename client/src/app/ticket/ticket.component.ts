@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Ticket } from '../models/Ticket';
 import { TicketService } from './tickets.service';
+import {ContextMenuComponent} from "ngx-contextmenu";
 
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
 })
 export class TicketComponent implements OnInit {
+  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
   tickets: Ticket[];
   editID: number = -1;
 
-  constructor(public ticketService: TicketService) { 
+  constructor(public ticketService: TicketService) {
     //this.tickets = ticketService.get();
   }
 

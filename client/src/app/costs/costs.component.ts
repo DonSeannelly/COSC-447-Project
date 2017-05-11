@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Cost } from '../models/Cost';
 import { CostsService } from './costs.service';
+import {ContextMenuComponent} from "ngx-contextmenu";
 
 @Component({
   selector: 'app-costs',
   templateUrl: './costs.component.html'
 })
 export class CostsComponent implements OnInit {
+  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
   costs: Cost[];
   editID: number = -1;
 
-  constructor(public costsService: CostsService) { 
+  constructor(public costsService: CostsService) {
     this.costs = costsService.get();
   }
 

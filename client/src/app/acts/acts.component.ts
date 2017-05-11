@@ -9,10 +9,7 @@ import { ContextMenuComponent } from 'ngx-contextmenu';
 })
 export class ActsComponent implements OnInit {
   @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
-  public items = [
-      { name: 'John', otherProperty: 'Foo' },
-      { name: 'Joe', otherProperty: 'Bar' }
-  ];
+
   acts: Act[];
   editID: number = -1;
 
