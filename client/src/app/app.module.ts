@@ -15,6 +15,7 @@ import {TicketComponent} from './ticket/ticket.component';
 import {ToursComponent} from './tours/tours.component';
 import {VenueComponent} from './venue/venue.component';
 import {CostsComponent} from './costs/costs.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 import {ActService} from './acts/acts.service';
 import {EmployeeService} from './employee/employee.service';
@@ -28,6 +29,7 @@ import {VenueService} from './venue/venue.service';
 import {QueryService} from './query.service';
 import {CostsService} from './costs/costs.service';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -40,7 +42,8 @@ import {CostsService} from './costs/costs.service';
         ToursComponent,
         VenueComponent,
         ShowsComponent,
-        CostsComponent
+        CostsComponent,
+        NavigationComponent
     ],
     imports: [
         BrowserModule,
