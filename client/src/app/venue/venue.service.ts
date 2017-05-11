@@ -8,8 +8,18 @@ export class VenueService implements serviceInterface {
     constructor(private http: Http) {
     }
     get() {
-        return this.http.get('/api/venue')
-            .map(res => res.json());
+        var result = [];
+        var count = 0;
+        this.http.get('/api/venue')
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {venueID: temp[0].value, poc: temp[1].value, capacity: temp[2].value,
+                    name: temp[3].value, city: temp[4].value, state: temp[5].value, street: temp[6].value,
+					zip: temp[7].value, type: temp[8].value, timeopen: temp[9].value, timeclose: temp[10].value};
+                count++;
+            }
+        });
+        return result;
     }
     create(record) {
         return this.http.get('/api/venue', record)
