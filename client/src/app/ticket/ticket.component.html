@@ -3,18 +3,18 @@
     <tr>
       <th>Amount Sold</th><th>Amount Given</th><th>Price</th>
     </tr>
-    <tr *ngFor="let v of venues; let i = index">
+    <tr *ngFor="let t of tickets; let i = index">
       <td>
-        <p *ngIf="editID != i">{{v.amountsold}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="v.amountsold"/>
+        <p *ngIf="editID != i">{{t.amountsold}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="t.amountsold"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{v.amountgiven}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="v.amountgiven"/>
+        <p *ngIf="editID != i">{{t.amountgiven}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="t.amountgiven"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{v.price}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="v.price"/>
+        <p *ngIf="editID != i">{{t.price}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="t.price"/>
       </td>
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
