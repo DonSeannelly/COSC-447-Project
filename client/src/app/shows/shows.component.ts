@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../models/Employee';
-import { EmployeeService } from './employee.service';
+import { Show } from '../models/Show';
+import { ShowsService } from './shows.service';
 
 @Component({
   selector: 'app-employee',
@@ -8,11 +8,11 @@ import { EmployeeService } from './employee.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  employees: Employee[];
+  shows: Show[];
   editID: number = -1;
 
-  constructor(public employeeService: EmployeeService) { 
-    this.employees = employeeService.get();
+  constructor(public showsService: ShowsService) {
+    //this.shows = showsService.get();
   }
 
   ngOnInit() {
@@ -24,12 +24,12 @@ export class EmployeeComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.employeeService.update(this.employees[index]);
+    this.showsService.update(this.shows[index]).subscribe();
   }
 
-  remove(index: number) {
-    this.employees.splice(index, 1);
-    this.employeeService.remove(this.employees[index]);
+  remove(id: number, index: number) {
+    this.shows.splice(index, 1);
+    this.showsService.remove(id).subscribe();
   }
 
 }

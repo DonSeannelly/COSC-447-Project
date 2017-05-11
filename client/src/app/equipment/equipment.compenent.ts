@@ -4,8 +4,7 @@ import { EquipmentService } from './equipment.service';
 
 @Component({
   selector: 'app-equipment',
-  templateUrl: './equipment.component.html',
-  styleUrls: ['./equipment.component.scss']
+  templateUrl: './equipment.component.html'
 })
 export class EquipmentComponent implements OnInit {
 
@@ -13,7 +12,7 @@ export class EquipmentComponent implements OnInit {
   editID: number = -1;
 
   constructor(public equipmentService: EquipmentService) { 
-    this.equipment = equipmentService.get();
+    //this.equipment = equipmentService.get();
   }
 
   ngOnInit() {
@@ -25,12 +24,12 @@ export class EquipmentComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.equipmentService.update(this.equipment[index]);
+    this.equipmentService.update(this.equipment[index]).subscribe();
   }
 
   remove(index: number) {
     this.equipment.splice(index, 1);
-    this.equipmentService.remove(this.equipment[index]);
+    this.equipmentService.remove(this.equipment[index]).subscribe();
   }
 
 }

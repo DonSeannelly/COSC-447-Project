@@ -7,9 +7,18 @@ import {serviceInterface} from '../services/serviceInterface';
 export class EquipmentService implements serviceInterface {
     constructor(private http: Http) {
     }
-    get() {
-        return this.http.get('/api/eqipment')
-            .map(res => res.json());
+     get() {
+        var result = [];
+        var count = 0;
+        this.http.get('/api/equipment')
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {condition: temp[0].value, type: temp[1].value, mode: temp[2].value,
+                    equipmentID: temp[3].value, venueID: temp[4].value};
+                count++;
+            }
+        });
+        return result;
     }
     create(record) {
         return this.http.get('/api/equipment', record)
@@ -23,4 +32,4 @@ export class EquipmentService implements serviceInterface {
         return this.http.put('/api/equipment', record)
             .map(res => res.json());
     }
-}promo
+}

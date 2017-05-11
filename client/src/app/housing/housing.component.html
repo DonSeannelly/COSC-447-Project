@@ -1,0 +1,39 @@
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th>Housing ID</th><th>Venue ID</th><th>Capacity</th><th>Price</th><th>Complex</th><th>POC</th>
+    </tr>
+    <tr *ngFor="let a of acts; let i = index">
+      <td>
+        <p *ngIf="editID != i">{{a.housingID}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.housingID"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.venueID}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.venueID"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.capacity}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.capacity"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.price}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.price"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.complex}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.complex"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{a.pointOfContact}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="a.pointOfContact"/>
+      </td>
+      <td>
+        <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
+        <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
+        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

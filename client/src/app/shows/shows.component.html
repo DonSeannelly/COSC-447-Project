@@ -1,56 +1,47 @@
 <table class="table table-striped table-bordered table-hover">
   <tbody>
-    <tr>
-      <th>First Name</th><th>Middle Initial</th><th>Last Name</th><th>Position</th>
-      <th>Phone</th><th>Zip Code</th><th>State</th><th>City</th><th>Street</th><th>Actions</th>
-    </tr>
-    <tr *ngFor="let e of employees; let i = index">
-      <td>
-        <p *ngIf="editID != i">{{e.firstName}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.firstName"/>
-      </td>
-      <td>
-        <p *ngIf="editID != i">{{e.middleInitial}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.middleInitial"/>
-      </td>
-      <td>
-        <p *ngIf="editID != i">{{e.lastName}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.lastName"/>
-      </td>
-      <td>
-        <p *ngIf="editID != i">{{e.position}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.position"/>
-      </td>
-      <td>
-        <p *ngIf="editID != i">{{e.phone}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.phone"/>
-      </td>
-      <td>
-      <td>
-        <p *ngIf="editID != i">{{e.zip}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.zip"/>
-      </td>
-      <td>
-      <td>
-        <p *ngIf="editID != i">{{e.state}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.state"/>
-      </td>
-      <td>
-      <td>
-        <p *ngIf="editID != i">{{e.city}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.city"/>
-      </td>
-      <td>
-      <td>
-        <p *ngIf="editID != i">{{e.street}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="e.street"/>
-      </td>
-      <td>
-      <td>
-        <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
-        <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
-        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
-      </td>
-    </tr>
+  <tr>
+    <th>Venue ID</th><th>Tour ID</th><th>Show ID</th><th>Date</th><th>Start Time</th><th>End Time
+  </th><th>Doors Time</th><th>Expected Sales</th><th>Actions</th>
+  </tr>
+  <tr *ngFor="let s of shows; let i = index">
+    <td>
+      <p *ngIf="editID != i">{{s.venueID}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.venueID"/>
+    </td>
+    <td>
+      <p *ngIf="editID != i">{{s.tourID}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.tourID"/>
+    </td>
+    <td>
+      <p *ngIf="editID != i">{{s.showID}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.showID"/>
+    </td>
+    <td>
+      <p *ngIf="editID != i">{{s.date}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.date"/>
+    </td>
+    <td>
+      <p *ngIf="editID != i">{{s.startTime}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.startTime"/>
+    </td>
+    <td>
+      <p *ngIf="editID != i">{{s.endTime}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.endTime"/>
+    </td>
+    <td>
+      <p *ngIf="editID != i">{{s.doorsTime}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.doorsTime"/>
+    </td>
+    <td>
+      <p *ngIf="editID != i">{{s.expectedSales}}</p>
+      <input *ngIf="editID == i" [(ngModel)]="s.expectedSales"/>
+    </td>
+    <td>
+      <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
+      <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
+      <button class="btn btn-danger" (click)="remove(s.showID, i)">Delete</button>
+    </td>
+  </tr>
   </tbody>
 </table>

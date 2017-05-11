@@ -4,8 +4,7 @@ import { PromoterService } from './promoters.service';
 
 @Component({
   selector: 'app-promoters',
-  templateUrl: './promoters.component.html',
-  styleUrls: ['./promoters.component.scss']
+  templateUrl: './promoters.component.html'
 })
 export class PromotersComponent implements OnInit {
 
@@ -13,7 +12,7 @@ export class PromotersComponent implements OnInit {
   editID: number = -1;
 
   constructor(public promoterService: PromoterService) { 
-    this.promoters = promoterService.get();
+    //this.promoters = promoterService.get();
   }
 
   ngOnInit() {
@@ -25,12 +24,12 @@ export class PromotersComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.promoterService.update(this.promoters[index]);
+    this.promoterService.update(this.promoters[index]).subscribe();
   }
 
   remove(index: number) {
     this.promoters.splice(index, 1);
-    this.promoterService.remove(this.promoters[index]);
+    this.promoterService.remove(this.promoters[index]).subscribe();
   }
 
 }

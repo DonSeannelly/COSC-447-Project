@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Act } from '../models/Act';
 import { ActService } from './acts.service';
+import { ContextMenuComponent } from 'ngx-contextmenu';
 
 @Component({
   selector: 'app-acts',
   templateUrl: './acts.component.html',
-  styleUrls: ['./acts.component.scss']
 })
 export class ActsComponent implements OnInit {
-
+  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
+  public items = [
+      { name: 'John', otherProperty: 'Foo' },
+      { name: 'Joe', otherProperty: 'Bar' }
+  ];
   acts: Act[];
   editID: number = -1;
 
@@ -26,12 +30,12 @@ export class ActsComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.actService.update(this.acts[index]);
+    this.actService.update(this.acts[index]).subscribe();
   }
 
   remove(index: number, id: number) {
     this.acts.splice(index, 1);
-    this.actService.remove(id);
+    this.actService.remove(id).subscribe();
   }
 
 }

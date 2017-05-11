@@ -12,7 +12,7 @@ export class EmployeeComponent implements OnInit {
   editID: number = -1;
 
   constructor(public employeeService: EmployeeService) { 
-    this.employees = employeeService.get();
+    //this.employees = employeeService.get();
   }
 
   ngOnInit() {
@@ -24,12 +24,12 @@ export class EmployeeComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.employeeService.update(this.employees[index]);
+    this.employeeService.update(this.employees[index]).subscribe();
   }
 
   remove(index: number) {
     this.employees.splice(index, 1);
-    this.employeeService.remove(this.employees[index]);
+    this.employeeService.remove(this.employees[index]).subscribe();
   }
 
 }
