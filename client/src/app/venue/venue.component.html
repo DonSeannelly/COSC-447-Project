@@ -5,7 +5,7 @@
     </tr>
     <tr *ngFor="let v of venues; let i = index">
       <td>
-        <p *ngIf="editID != i">{{v.poc}}</p>
+        <p *ngIf="editID != i">{{v.pointOfContact}}</p>
         <input *ngIf="editID == i" [(ngModel)]="v.poc"/>
       </td>
       <td>
@@ -33,17 +33,17 @@
         <input *ngIf="editID == i" [(ngModel)]="v.type"/>
       </td>
 	  <td>
-        <p *ngIf="editID != i">{{v.time-Open}}</p>
+        <p *ngIf="editID != i">{{v.timeOpen}}</p>
         <input *ngIf="editID == i" [(ngModel)]="v.time-open"/>
       </td>
 	  <td>
-        <p *ngIf="editID != i">{{v.time-Close}}</p>
+        <p *ngIf="editID != i">{{v.timeClose}}</p>
         <input *ngIf="editID == i" [(ngModel)]="v.time-close"/>
       </td>
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
         <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
-        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+        <button class="btn btn-danger" (click)="remove(i, v.venueID)">Delete</button>
       </td>
     </tr>
   </tbody>

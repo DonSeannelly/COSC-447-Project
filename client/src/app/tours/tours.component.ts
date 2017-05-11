@@ -27,9 +27,9 @@ export class ToursComponent implements OnInit {
     this.tourService.update(this.tours[index]).subscribe();
   }
 
-  remove(index: number) {
+  remove(index: number, toursID: number) {
     this.tours.splice(index, 1);
-    this.tourService.remove(this.tours[index]).subscribe();
+    this.tourService.remove(this.tours[toursID]).subscribe();
   }
 
 }

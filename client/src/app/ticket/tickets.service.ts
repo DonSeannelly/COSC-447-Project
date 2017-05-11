@@ -13,8 +13,8 @@ export class TicketService implements serviceInterface {
         this.http.get('/api/ticket')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
-                result[count] = {ticketID: temp[0].value, amountsold: temp[1].value, amountgiven: temp[2].value,
-                    price: temp[3].value};
+                result[count] = {showID: temp[0].value, actID: temp[1].value, amountsold: temp[2].value, amountgiven: temp[3].value,
+                    price: temp[4].value};
                 count++;
             }
         });

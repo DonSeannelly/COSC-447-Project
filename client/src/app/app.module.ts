@@ -11,7 +11,7 @@ import {EquipmentComponent} from './equipment/equipment.compenent';
 import {HousingComponent} from './housing/housing.component';
 import {PromotersComponent} from './promoter/promoters.component';
 import { ShowsComponent } from './shows/shows.component';
-import {TicketComponent} from './ticket/ticet.component';
+import {TicketComponent} from './ticket/ticket.component';
 import {ToursComponent} from './tours/tours.component';
 import {VenueComponent} from './venue/venue.component';
 

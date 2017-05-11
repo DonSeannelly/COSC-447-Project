@@ -3,35 +3,35 @@
     <tr>
       <th>Housing ID</th><th>Venue ID</th><th>Capacity</th><th>Price</th><th>Complex</th><th>POC</th>
     </tr>
-    <tr *ngFor="let a of acts; let i = index">
+    <tr *ngFor="let h of housing; let i = index">
       <td>
-        <p *ngIf="editID != i">{{a.housingID}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.housingID"/>
+        <p *ngIf="editID != i">{{h.housingID}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="h.housingID"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.venueID}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.venueID"/>
+        <p *ngIf="editID != i">{{h.venueID}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="h.venueID"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.capacity}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.capacity"/>
+        <p *ngIf="editID != i">{{h.capacity}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="h.capacity"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.price}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.price"/>
+        <p *ngIf="editID != i">{{h.price}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="h.price"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.complex}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.complex"/>
+        <p *ngIf="editID != i">{{h.complex}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="h.complex"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.pointOfContact}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.pointOfContact"/>
+        <p *ngIf="editID != i">{{h.pointOfContact}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="h.pointOfContact"/>
       </td>
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
         <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
-        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+        <button class="btn btn-danger" (click)="remove(i, h.housingID)">Delete</button>
       </td>
     </tr>
   </tbody>
