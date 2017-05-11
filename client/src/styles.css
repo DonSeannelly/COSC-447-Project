@@ -3,7 +3,7 @@
   background: transparent;
   border: 0;
 }
-ul {
+.app-navbar {
     text-align: center;
     background-color: #286090;
     list-style-type: none;
@@ -11,13 +11,13 @@ ul {
     margin-bottom: 0px;
 }
 
-ul li {
+.app-navbar li {
     display: inline-block;
     margin-top: 10px;
     font-size: 20px;
     padding: 5px;
 }
 
-ul li a {
+.app-navbar li a {
     color: white !important;
 }
