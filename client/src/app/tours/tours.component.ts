@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Tour } from '../models/Tour';
 import { ToursService } from './tours.service';
+import {ContextMenuComponent} from "ngx-contextmenu";
 
 @Component({
   selector: 'app-tours',
   templateUrl: './tours.component.html'
 })
 export class ToursComponent implements OnInit {
+  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
   tours: Tour[];
   editID: number = -1;

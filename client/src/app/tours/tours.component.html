@@ -4,7 +4,7 @@
       <th>Title</th>
       <th>Actions</th>
     </tr>
-    <tr *ngFor="let t of tours; let i = index">
+    <tr *ngFor="let t of tours; let i = index" [contextMenu]="basicMenu" [contextMenuSubject]="v">
       <td>
         <p *ngIf="editID != i">{{t.title}}</p>
         <input *ngIf="editID == i" [(ngModel)]="t.title"/>
@@ -15,5 +15,10 @@
         <button class="btn btn-danger" (click)="remove(i, t.tourID)">Delete</button>
       </td>
     </tr>
+    <context-menu>
+      <ng-template contextMenuItem passive="true">
+        <button class="context-link">View Related Shows</button>
+      </ng-template>
+    </context-menu>
   </tbody>
 </table>
