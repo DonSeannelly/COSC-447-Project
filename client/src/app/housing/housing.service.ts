@@ -32,4 +32,4 @@ export class HousingService implements serviceInterface {
         return this.http.put('/api/housing', record)
             .map(res => res.json());
     }
-}promo
+}
