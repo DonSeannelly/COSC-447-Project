@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Act } from '../models/Act';
 import { ActService } from './acts.service';
+import { ContextMenuComponent } from 'ngx-contextmenu';
 
 @Component({
   selector: 'app-acts',
@@ -8,7 +9,11 @@ import { ActService } from './acts.service';
   styleUrls: ['./acts.component.scss']
 })
 export class ActsComponent implements OnInit {
-
+  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
+  public items = [
+      { name: 'John', otherProperty: 'Foo' },
+      { name: 'Joe', otherProperty: 'Bar' }
+  ];
   acts: Act[];
   editID: number = -1;
 

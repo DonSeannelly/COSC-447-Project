@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map'
-import {serviceInterface} from './serviceInterface';
+import {serviceInterface} from '../services/serviceInterface';
 
 @Injectable()
 export class ShowsService implements serviceInterface {

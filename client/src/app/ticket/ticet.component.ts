@@ -8,11 +8,11 @@ import { TicketService } from './tickets.service';
 })
 export class TicketComponent implements OnInit {
 
-  tickets: Tickets[];
+  tickets: Ticket[];
   editID: number = -1;
 
   constructor(public ticketService: TicketService) { 
-    this.tickets = ticketService.get();
+    //this.tickets = ticketService.get();
   }
 
   ngOnInit() {

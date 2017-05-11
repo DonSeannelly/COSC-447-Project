@@ -8,11 +8,11 @@ import { VenueService } from './venue.service';
 })
 export class VenueComponent implements OnInit {
 
-  venues: Venues[];
+  venues: Venue[];
   editID: number = -1;
 
   constructor(public venueService: VenueService) { 
-    this.venues = venueService.get();
+    //this.venues = venueService.get();
   }
 
   ngOnInit() {

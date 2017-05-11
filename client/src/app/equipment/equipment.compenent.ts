@@ -13,7 +13,7 @@ export class EquipmentComponent implements OnInit {
   editID: number = -1;
 
   constructor(public equipmentService: EquipmentService) { 
-    this.equipment = equipmentService.get();
+    //this.equipment = equipmentService.get();
   }
 
   ngOnInit() {

@@ -23,4 +23,4 @@ export class EquipmentService implements serviceInterface {
         return this.http.put('/api/equipment', record)
             .map(res => res.json());
     }
-}promo
+}

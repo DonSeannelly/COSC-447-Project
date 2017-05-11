@@ -12,7 +12,7 @@ export class EmployeeComponent implements OnInit {
   editID: number = -1;
 
   constructor(public employeeService: EmployeeService) { 
-    this.employees = employeeService.get();
+    //this.employees = employeeService.get();
   }
 
   ngOnInit() {

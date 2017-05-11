@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tour } from '../models/Tour';
-import { TourService } from './tours.service';
+import { ToursService } from './tours.service';
 
 @Component({
   selector: 'app-acts',
@@ -8,11 +8,11 @@ import { TourService } from './tours.service';
 })
 export class ToursComponent implements OnInit {
 
-  tours: Tours[];
+  tours: Tour[];
   editID: number = -1;
 
-  constructor(public tourService: TourService) { 
-    this.tours = tourService.get();
+  constructor(public tourService: ToursService) {
+    //this.tours = tourService.get();
   }
 
   ngOnInit() {

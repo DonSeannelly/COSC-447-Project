@@ -25,6 +25,7 @@ export class ActService implements serviceInterface {
             .map(res => res.json());
     }
     remove(id) {
+        console.log(id);
         return this.http.delete('/api/act/' + id)
             .map(res => res.json());
     }
