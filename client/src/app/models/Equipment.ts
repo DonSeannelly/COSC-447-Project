@@ -1,7 +1,7 @@
 export class Equipment {
     condition: string;
     type: string;
-    mode: string;
+    model: string;
     equipmentID: number;
     venueID: number;
 }

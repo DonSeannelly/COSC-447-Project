@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map'
-import {serviceInterface} from './serviceInterface';
+import {serviceInterface} from '../services/serviceInterface';
+import {Show} from "../models/Show";
 
 @Injectable()
 export class ShowsService implements serviceInterface {
@@ -21,17 +22,29 @@ export class ShowsService implements serviceInterface {
         });
         return result;
   }
-  create(record) {
-    return this.http.get('/api/show', record)
+  create(record: Show) {
+    return this.http.get('/api/show', this.mapToSchema(record))
         .map(res => res.json());
   }
   remove(id) {
     return this.http.delete('/api/show/' + id)
         .map(res => res.json());
   }
-  update(record) {
-    return this.http.put('/api/show', record)
+  update(record: Show) {
+    return this.http.put('/api/show', this.mapToSchema(record))
         .map(res => res.json());
+  }
+  mapToSchema(record: Show) {
+    return {
+      Date: record.date,
+      Start_Time: record.startTime,
+      End_Time: record.endTime,
+      Doors_Time: record.doorsTime,
+      Expected_Sales: record.expectedSales,
+      Show_ID: record.showID,
+      Ven_ID: record.venueID,
+      Tour_ID: record.tourID
+    }
   }
 
 }

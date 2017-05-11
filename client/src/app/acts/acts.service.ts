@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map'
 import {serviceInterface} from '../services/serviceInterface';
+import { Act } from '../models/Act';
 
 @Injectable()
 export class ActService implements serviceInterface {
@@ -20,8 +21,8 @@ export class ActService implements serviceInterface {
         });
         return result;
     }
-    create(record) {
-        return this.http.get('/api/act', record)
+    create(record: Act) {
+        return this.http.get('/api/act', this.mapToSchema(record))
             .map(res => res.json());
     }
     remove(id) {
@@ -29,9 +30,19 @@ export class ActService implements serviceInterface {
         return this.http.delete('/api/act/' + id)
             .map(res => res.json());
     }
-    update(record) {
-        return this.http.put('/api/act', record)
+    update(record: Act) {
+        return this.http.put('/api/act', this.mapToSchema(record))
             .map(res => res.json());
+    }
+    mapToSchema(record: Act) {
+      return {
+        Act_ID: record.actID,
+        Name: record.name,
+        Email: record.email,
+        Genre: record.genre,
+        City: record.city,
+        State: record.state
+      };
     }
 
 }

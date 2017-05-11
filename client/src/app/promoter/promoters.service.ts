@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map'
 import {serviceInterface} from '../services/serviceInterface';
+import {Promoter} from "../models/Promoter";
 
 @Injectable()
 export class PromoterService implements serviceInterface {
-    constructor(private http: Http) {
-    }
- 	get() {
+    constructor(private http: Http) {}
+ 	  get() {
         var result = [];
         var count = 0;
         this.http.get('/api/promoters')
@@ -20,16 +20,26 @@ export class PromoterService implements serviceInterface {
         });
         return result;
     }
-    create(record) {
-        return this.http.get('/api/promoter', record)
+    create(record: Promoter) {
+        return this.http.get('/api/promoter', this.mapToSchema(record))
             .map(res => res.json());
     }
     remove(id) {
         return this.http.delete('/api/promoter/' + id)
             .map(res => res.json());
     }
-    update(record) {
-        return this.http.put('/api/promoter', record)
+    update(record: Promoter) {
+        return this.http.put('/api/promoter', this.mapToSchema(record))
             .map(res => res.json());
+    }
+    mapToSchema(record: Promoter) {
+      return {
+        Pro_ID: record.promoterID,
+        Fname: record.firstName,
+        Lname: record.lastName,
+        Minit: record.middleInitial,
+        Phone: record.phone,
+        Organization: record.organization
+      }
     }
 }

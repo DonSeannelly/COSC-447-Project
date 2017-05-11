@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map'
 import {serviceInterface} from '../services/serviceInterface';
+import {Venue} from "../models/Venue";
 
 @Injectable()
 export class VenueService implements serviceInterface {
@@ -10,7 +11,7 @@ export class VenueService implements serviceInterface {
     get() {
         var result = [];
         var count = 0;
-        this.http.get('/api/venue')
+        this.http.get('/api/venues')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
                 result[count] = {venueID: temp[0].value, pointOfContact: temp[1].value, capacity: temp[2].value,
@@ -21,17 +22,31 @@ export class VenueService implements serviceInterface {
         });
         return result;
     }
-    create(record) {
-        return this.http.get('/api/venue', record)
+    create(record: Venue) {
+        return this.http.get('/api/venue', this.mapToSchema(record))
             .map(res => res.json());
     }
     remove(id) {
         return this.http.delete('/api/venue/' + id)
             .map(res => res.json());
     }
-    update(record) {
-        return this.http.put('/api/venue', record)
+    update(record: Venue) {
+        return this.http.put('/api/venue', this.mapToSchema(record))
             .map(res => res.json());
     }
-
+    mapToSchema(record: Venue) {
+      return {
+        Ven_ID: record.venueID,
+        POC: record.pointOfContact,
+        Capacity: record.capacity,
+        Name: record.name,
+        City: record.city,
+        State: record.state,
+        Street: record.street,
+        ZIP: record.zip,
+        Type: record.type,
+        Time_Open: record.timeOpen,
+        Time_Close: record.timeClose
+      };
+    }
 }

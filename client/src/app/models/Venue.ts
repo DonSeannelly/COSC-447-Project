@@ -5,6 +5,7 @@ export class Venue {
     name: string;
     city: string;
     state: string;
+    street: string;
     zip: number;
     type: string;
     timeOpen: Date;
