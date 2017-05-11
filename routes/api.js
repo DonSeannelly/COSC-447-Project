@@ -293,6 +293,19 @@ pool.acquire(function (err, connection) {
     });
 
     // EQUIPMENT
+    router.get('/equipment', function (req, res) {
+        var venueID = req.params['venue_id'];
+        var request = new Request('SELECT * FROM Equipment;',
+            function (err, rowCount, rows) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.json(rows);
+                }
+            });
+        connection.execSql(request);
+    });
+
     router.get('/equipment/:venue_id', function (req, res) {
         var venueID = req.params['venue_id'];
         var request = new Request('SELECT * FROM Equipment WHERE Ven_ID = ' + venueID + ' ;',
@@ -372,9 +385,9 @@ pool.acquire(function (err, connection) {
     });
 
     // HOUSING
-    router.get('/housing/:venue_id', function (req, res) {
+    router.get('/housing', function (req, res) {
         var venueID = req.params['venue_id'];
-        var request = new Request('SELECT * FROM Acts WHERE Ven_ID = ' + venueID + ';',
+        var request = new Request('SELECT * FROM Housing;',
             function (err, rowCount, rows) {
                 if (err) {
                     console.log(err);
@@ -384,10 +397,9 @@ pool.acquire(function (err, connection) {
             });
         connection.execSql(request);
     });
-
-    router.get('/housing/:housing_id', function (req, res) {
-        var housingID = req.params['housing_id'];
-        var request = new Request('SELECT * FROM Acts WHERE H_ID = ' + housingID + ';',
+    router.get('/housing/:venue_id', function (req, res) {
+        var venueID = req.params['venue_id'];
+        var request = new Request('SELECT * FROM Housing WHERE Ven_ID = ' + venueID + ';',
             function (err, rowCount, rows) {
                 if (err) {
                     console.log(err);

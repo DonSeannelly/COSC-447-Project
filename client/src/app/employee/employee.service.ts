@@ -11,7 +11,7 @@ export class EmployeeService implements serviceInterface {
   get() {
         var result = [];
         var count = 0;
-        this.http.get('/api/ticket')
+        this.http.get('/api/employees')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
                 result[count] = {employeeID: temp[0].value, position: temp[1].value, phone: temp[2].value, firstName: temp[3].value,

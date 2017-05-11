@@ -18,7 +18,6 @@ export class ActsComponent implements OnInit {
 
   constructor(private actService: ActService) {
     this.acts = actService.get();
-    console.log(this.acts);
   }
 
   ngOnInit() {

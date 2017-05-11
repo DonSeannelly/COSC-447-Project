@@ -12,7 +12,7 @@ export class ToursComponent implements OnInit {
   editID: number = -1;
 
   constructor(public tourService: ToursService) {
-    //this.tours = tourService.get();
+    this.tours = tourService.get();
   }
 
   ngOnInit() {

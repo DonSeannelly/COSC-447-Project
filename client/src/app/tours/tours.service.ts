@@ -14,7 +14,7 @@ export class ToursService implements serviceInterface {
         this.http.get('/api/tours')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
-                result[count] = {tourID: temp[0].value, title: temp[1].value};
+                result[count] = {title: temp[0].value, tourID: temp[1].value};
                 count++;
             }
         });

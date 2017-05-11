@@ -12,7 +12,7 @@ export class VenueComponent implements OnInit {
   editID: number = -1;
 
   constructor(public venueService: VenueService) { 
-    //this.venues = venueService.get();
+    this.venues = venueService.get();
   }
 
   ngOnInit() {

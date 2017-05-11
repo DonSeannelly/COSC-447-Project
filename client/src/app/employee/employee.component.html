@@ -26,26 +26,21 @@
         <input *ngIf="editID == i" [(ngModel)]="e.phone"/>
       </td>
       <td>
-      <td>
         <p *ngIf="editID != i">{{e.zip}}</p>
         <input *ngIf="editID == i" [(ngModel)]="e.zip"/>
       </td>
-      <td>
       <td>
         <p *ngIf="editID != i">{{e.state}}</p>
         <input *ngIf="editID == i" [(ngModel)]="e.state"/>
       </td>
       <td>
-      <td>
         <p *ngIf="editID != i">{{e.city}}</p>
         <input *ngIf="editID == i" [(ngModel)]="e.city"/>
       </td>
       <td>
-      <td>
         <p *ngIf="editID != i">{{e.street}}</p>
         <input *ngIf="editID == i" [(ngModel)]="e.street"/>
       </td>
-      <td>
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
         <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>

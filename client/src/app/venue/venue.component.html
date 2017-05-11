@@ -2,11 +2,12 @@
   <tbody>
     <tr>
       <th>POC</th><th>Capacity</th><th>Name</th><th>City</th><th>State</th><th>Street</th><th>Zip</th><th>Type</th><th>Time-Open</th><th>Time-Close</th>
+      <th>Actions</th>
     </tr>
     <tr *ngFor="let v of venues; let i = index">
       <td>
         <p *ngIf="editID != i">{{v.pointOfContact}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="v.poc"/>
+        <input *ngIf="editID == i" [(ngModel)]="v.pointOfContact"/>
       </td>
       <td>
         <p *ngIf="editID != i">{{v.capacity}}</p>
@@ -24,6 +25,10 @@
         <p *ngIf="editID != i">{{v.state}}</p>
         <input *ngIf="editID == i" [(ngModel)]="v.state"/>
       </td>
+      <td>
+        <p *ngIf="editID != i">{{v.street}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="v.street"/>
+      </td>
 	  <td>
         <p *ngIf="editID != i">{{v.zip}}</p>
         <input *ngIf="editID == i" [(ngModel)]="v.zip"/>
@@ -34,11 +39,11 @@
       </td>
 	  <td>
         <p *ngIf="editID != i">{{v.timeOpen}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="v.time-open"/>
+        <input *ngIf="editID == i" [(ngModel)]="v.timeOpen"/>
       </td>
 	  <td>
         <p *ngIf="editID != i">{{v.timeClose}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="v.time-close"/>
+        <input *ngIf="editID == i" [(ngModel)]="v.timeClose"/>
       </td>
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>

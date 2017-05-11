@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+ul {
+    text-align: center;
+    background-color: #286090;
+    list-style-type: none;
+    min-height: 50px;
+    margin-bottom: 0px;
+}
+
+ul li {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+ul li a {
+    color: white !important;
+}

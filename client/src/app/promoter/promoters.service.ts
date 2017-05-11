@@ -13,8 +13,8 @@ export class PromoterService implements serviceInterface {
         this.http.get('/api/promoters')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
-                result[count] = {firstName: temp[0].value, lastName: temp[1].value, middleInitial: temp[2].value,
-                    phone: temp[3].value, organization: temp[4].value, promoterID: temp[5].value};
+                result[count] = {promoterID: temp[0].value, firstName: temp[1].value, lastName: temp[2].value,
+                    middleInitial: temp[3].value, phone: temp[4].value, organization: temp[5].value};
                 count++;
             }
         });
