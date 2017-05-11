@@ -1,0 +1,43 @@
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th>Show ID</th><th>Lights</th><th>Sound</th><th>Bouncer</th><th>Bar</th><th>Promoter Cost
+          </th><th>Band Payout</th><th>Actions</th>
+    </tr>
+    <tr *ngFor="let c of costs; let i = index">
+      <td>
+        <p *ngIf="editID != i">{{c.ShowID}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="c.ShowID"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{c.Lights}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="c.Lights"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{c.Sound}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="c.Sound"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{c.Bouncer}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="c.Bouncer"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{c.Bar}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="c.Bar"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{c.PromoterCost}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="s.EndTime"/>
+      </td>
+      <td>
+        <p *ngIf="editID != i">{{c.BandPayout}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="c.BandPayout"/>
+      </td>
+      <td>
+        <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
+        <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
+        <button class="btn btn-danger" (click)="remove(s.showID, i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

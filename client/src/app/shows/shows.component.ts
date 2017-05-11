@@ -24,12 +24,12 @@ export class ShowsComponent implements OnInit {
 
   save(index: number) {
     this.editID = -1;
-    this.showService.update(this.shows[index]);
+    this.showService.update(this.shows[index]).subscribe();
   }
 
   remove(id: number, index: number) {
     this.shows.splice(index, 1);
-    this.showService.remove(id);
+    this.showService.remove(id).subscribe();
   }
 
 }

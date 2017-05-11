@@ -8,9 +8,19 @@ export class CostsService implements serviceInterface {
     constructor(private http: Http) {
     }
     get() {
-        return this.http.get('/api/costs')
-            .map(res => res.json());
-    }
+        var result = [];
+        var count = 0;
+        this.http.get('/api/ticket')
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {Show_ID: temp[0].value, Lights: temp[1].value, Sound: temp[2].value,
+                    Bouncer: temp[3].value, Bar: temp[4].value, Promoter_Cost: temp[5].value,
+                    Band_Payout: temp[6].value};
+                count++;
+            }
+        });
+        return result;
+  }
     create(record) {
         return this.http.get('/api/cost', record)
             .map(res => res.json());
