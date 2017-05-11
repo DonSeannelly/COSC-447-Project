@@ -10,12 +10,12 @@ export class ShowsService implements serviceInterface {
   get() {
         var result = [];
         var count = 0;
-        this.http.get('/api/ticket')
+        this.http.get('/api/shows')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
-                result[count] = {Date: temp[0].value, Start_Time: temp[1].value, End_Time: temp[2].value,
-                    Doors_Time: temp[3].value, Expected_Sales: temp[4].value, Show_ID: temp[5].value,
-                    Ven_ID: temp[6].value, Tour_ID: temp[7].value};
+                result[count] = {date: temp[0].value, startTime: temp[1].value, endTime: temp[2].value,
+                    doorsTime: temp[3].value, expectedSales: temp[4].value, showID: temp[5].value,
+                    venID: temp[6].value, tourID: temp[7].value};
                 count++;
             }
         });

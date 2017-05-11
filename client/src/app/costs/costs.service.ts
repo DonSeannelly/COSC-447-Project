@@ -10,12 +10,12 @@ export class CostsService implements serviceInterface {
     get() {
         var result = [];
         var count = 0;
-        this.http.get('/api/ticket')
+        this.http.get('/api/cost')
             .map(res => res.json()).subscribe(response => {
             for (let temp of response) {
-                result[count] = {Show_ID: temp[0].value, Lights: temp[1].value, Sound: temp[2].value,
-                    Bouncer: temp[3].value, Bar: temp[4].value, Promoter_Cost: temp[5].value,
-                    Band_Payout: temp[6].value};
+                result[count] = {showID: temp[0].value, lights: temp[1].value, sound: temp[2].value,
+                    bouncer: temp[3].value, Bar: temp[4].value, promoterCost: temp[5].value,
+                    bandPayout: temp[6].value};
                 count++;
             }
         });
