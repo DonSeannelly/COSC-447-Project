@@ -7,9 +7,18 @@ import {serviceInterface} from '../services/serviceInterface';
 export class PromoterService implements serviceInterface {
     constructor(private http: Http) {
     }
-    get() {
-        return this.http.get('/api/promoters')
-            .map(res => res.json());
+ 	get() {
+        var result = [];
+        var count = 0;
+        this.http.get('/api/promoters')
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {firstName: temp[0].value, lastName: temp[1].value, middleInitial: temp[2].value,
+                    phone: temp[3].value, organization: temp[4].value, promoterID: temp[5].value};
+                count++;
+            }
+        });
+        return result;
     }
     create(record) {
         return this.http.get('/api/promoter', record)
