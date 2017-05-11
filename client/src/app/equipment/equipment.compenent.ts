@@ -12,7 +12,7 @@ export class EquipmentComponent implements OnInit {
   editID: number = -1;
 
   constructor(public equipmentService: EquipmentService) { 
-    //this.equipment = equipmentService.get();
+    this.equipment = equipmentService.get();
   }
 
   ngOnInit() {
@@ -27,9 +27,9 @@ export class EquipmentComponent implements OnInit {
     this.equipmentService.update(this.equipment[index]).subscribe();
   }
 
-  remove(index: number) {
+  remove(index: number, equipmentID: number) {
     this.equipment.splice(index, 1);
-    this.equipmentService.remove(this.equipment[index]).subscribe();
+    this.equipmentService.remove(this.equipment[equipmentID]).subscribe();
   }
 
 }

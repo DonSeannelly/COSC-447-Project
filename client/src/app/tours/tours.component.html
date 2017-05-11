@@ -5,13 +5,13 @@
     </tr>
     <tr *ngFor="let t of tours; let i = index">
       <td>
-        <p *ngIf="editID != i">{{a.title}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.title"/>
+        <p *ngIf="editID != i">{{t.title}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="t.title"/>
       </td>
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
         <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
-        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+        <button class="btn btn-danger" (click)="remove(i, t.tourID)">Delete</button>
       </td>
     </tr>
   </tbody>

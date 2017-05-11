@@ -27,9 +27,9 @@ export class HousingComponent implements OnInit {
     this.housingService.update(this.housing[index]).subscribe();
   }
 
-  remove(index: number) {
+  remove(index: number, housingID: number) {
     this.housing.splice(index, 1);
-    this.housingService.remove(this.housing[index]).subscribe();
+    this.housingService.remove(this.housing[housingID]).subscribe();
   }
 
 }

@@ -27,9 +27,9 @@ export class PromotersComponent implements OnInit {
     this.promoterService.update(this.promoters[index]).subscribe();
   }
 
-  remove(index: number) {
+  remove(index: number, promoterID: number) {
     this.promoters.splice(index, 1);
-    this.promoterService.remove(this.promoters[index]).subscribe();
+    this.promoterService.remove(this.promoters[promoterID]).subscribe();
   }
 
 }

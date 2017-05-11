@@ -3,31 +3,31 @@
     <tr>
       <th>Condition</th><th>Type</th><th>Mode</th><th>Equipment ID</th><th>Venue ID</th>
     </tr>
-    <tr *ngFor="let a of acts; let i = index">
+    <tr *ngFor="let e of equipment; let i = index">
       <td>
-        <p *ngIf="editID != i">{{a.condition}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.condition"/>
+        <p *ngIf="editID != i">{{e.condition}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="e.condition"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.type}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.type"/>
+        <p *ngIf="editID != i">{{e.type}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="e.type"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.mode}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.mode"/>
+        <p *ngIf="editID != i">{{e.mode}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="e.mode"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.equipmentID}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.equipmentID"/>
+        <p *ngIf="editID != i">{{e.equipmentID}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="e.equipmentID"/>
       </td>
       <td>
-        <p *ngIf="editID != i">{{a.venueID}}</p>
-        <input *ngIf="editID == i" [(ngModel)]="a.venueID"/>
+        <p *ngIf="editID != i">{{e.venueID}}</p>
+        <input *ngIf="editID == i" [(ngModel)]="e.venueID"/>
       </td>
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
         <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
-        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+        <button class="btn btn-danger" (click)="remove(i, e.equipmentID)">Delete</button>
       </td>
     </tr>
   </tbody>

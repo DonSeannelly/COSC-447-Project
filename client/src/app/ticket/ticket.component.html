@@ -19,7 +19,7 @@
       <td>
         <button *ngIf="editID != i" class="btn btn-primary" (click)="edit(i)">Edit</button>
         <button *ngIf="editID == i" class="btn btn-success" (click)="save(i)">Save</button>
-        <button class="btn btn-danger" (click)="remove(i)">Delete</button>
+        <button class="btn btn-danger" (click)="remove(i, t.showID)">Delete</button>
       </td>
     </tr>
   </tbody>

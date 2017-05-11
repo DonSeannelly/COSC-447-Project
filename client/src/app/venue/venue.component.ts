@@ -27,9 +27,9 @@ export class VenueComponent implements OnInit {
     this.venueService.update(this.venues[index]).subscribe();
   }
 
-  remove(index: number) {
+  remove(index: number, venueID: number) {
     this.venues.splice(index, 1);
-    this.venueService.remove(this.venues[index]).subscribe();
+    this.venueService.remove(this.venues[venueID]).subscribe();
   }
 
 }
