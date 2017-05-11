@@ -12,7 +12,7 @@ export class PromotersComponent implements OnInit {
   editID: number = -1;
 
   constructor(public promoterService: PromoterService) { 
-    //this.promoters = promoterService.get();
+    this.promoters = promoterService.get();
   }
 
   ngOnInit() {

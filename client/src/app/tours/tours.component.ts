@@ -3,7 +3,7 @@ import { Tour } from '../models/Tour';
 import { ToursService } from './tours.service';
 
 @Component({
-  selector: 'app-acts',
+  selector: 'app-tours',
   templateUrl: './tours.component.html'
 })
 export class ToursComponent implements OnInit {
