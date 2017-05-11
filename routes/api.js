@@ -118,6 +118,7 @@ pool.acquire(function (err, connection) {
                     res.json({message: 'Act has been deleted'})
                 }
             });
+        connection.execSql(request);
     });
 
     // COSTS
@@ -247,6 +248,8 @@ pool.acquire(function (err, connection) {
         request.addParameter('State', TYPES.VarChar, req.body['State']);
         request.addParameter('City', TYPES.VarChar, req.body['City']);
         request.addParameter('Street', TYPES.VarChar, req.body['Street']);
+
+        connection.execSql(request);
     });
 
     router.put('/employee', function (req, res) {
@@ -825,6 +828,7 @@ pool.acquire(function (err, connection) {
                     res.json({message: 'Venue Deleted'})
                 }
             });
+        connection.execSql(request);
     });
 });
 
