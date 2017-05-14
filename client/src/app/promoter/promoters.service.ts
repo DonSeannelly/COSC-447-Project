@@ -20,6 +20,19 @@ export class PromoterService implements serviceInterface {
         });
         return result;
     }
+    getActPromoters(id) {
+        var result = [];
+        var count = 0;
+        this.http.get('/api/promoters/act/' + id)
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {promoterID: temp[0].value, firstName: temp[1].value, lastName: temp[2].value,
+                    middleInitial: temp[3].value, phone: temp[4].value, organization: temp[5].value};
+                count++;
+            }
+        });
+        return result;
+    }
     create(record: Promoter) {
         return this.http.get('/api/promoter', this.mapToSchema(record))
             .map(res => res.json());

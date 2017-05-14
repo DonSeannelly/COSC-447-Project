@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import { Show } from '../models/Show';
 import { ShowsService } from './shows.service';
 
@@ -11,8 +12,21 @@ export class ShowsComponent implements OnInit {
   shows: Show[];
   editID: number = -1;
 
-  constructor(public showService: ShowsService) { 
-    this.shows = showService.get();
+  constructor(public showService: ShowsService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      var parent = params['parent'];
+      var id = params['id'];
+
+      if(parent === "act") {
+        this.shows = showService.getActShows(id);
+      } else if (parent === "venue"){
+        this.shows = showService.getVenueShows(id);
+      } else if (parent === "tours") {
+        this.shows = showService.getToursShows(id);
+      } else {
+          this.shows = showService.get();
+      }
+    });
   }
 
   ngOnInit() {

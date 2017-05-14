@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import { Router } from '@angular/router';
 import { Tour } from '../models/Tour';
 import { ToursService } from './tours.service';
 import {ContextMenuComponent} from "ngx-contextmenu";
@@ -13,7 +14,7 @@ export class ToursComponent implements OnInit {
   tours: Tour[];
   editID: number = -1;
 
-  constructor(public tourService: ToursService) {
+  constructor(public tourService: ToursService, private router: Router) {
     this.tours = tourService.get();
   }
 
@@ -33,5 +34,7 @@ export class ToursComponent implements OnInit {
     this.tours.splice(index, 1);
     this.tourService.remove(this.tours[toursID]).subscribe();
   }
-
+  switchContext(id) {
+    this.router.navigate(['shows','tours',id])
+  }
 }

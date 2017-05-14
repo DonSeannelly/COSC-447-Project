@@ -31,7 +31,7 @@
       </td>
     </tr>
     <context-menu>
-      <ng-template contextMenuItem passive="true">
+      <ng-template contextMenuItem (execute)="switchContext($event.item.promoterID)">
         <button class="context-link">View Related Act</button>
       </ng-template>
     </context-menu>

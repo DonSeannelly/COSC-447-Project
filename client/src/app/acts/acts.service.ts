@@ -21,6 +21,19 @@ export class ActService implements serviceInterface {
         });
         return result;
     }
+    getPromoterActs(id) {
+        var result = [];
+        var count = 0;
+        this.http.get('/api/acts/promoter/' + id)
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {actID: temp[0].value, name: temp[1].value, email: temp[2].value,
+                    genre: temp[3].value, city: temp[4].value, state: temp[5].value};
+                count++;
+            }
+        });
+        return result;
+    }
     create(record: Act) {
         return this.http.get('/api/act', this.mapToSchema(record))
             .map(res => res.json());

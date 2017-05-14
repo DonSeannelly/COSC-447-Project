@@ -56,6 +56,20 @@ pool.acquire(function (err, connection) {
         connection.execSql(request);
     });
 
+    router.get('/acts/promoter/:promoter_id', function (req, res) {
+        var promoterID = req.params['promoter_id'];
+        var request = new Request('SELECT * FROM Acts WHERE Act_ID IN (SELECT DISTINCT Act_ID FROM Have WHERE ' +
+            'Pro_ID = ' + promoterID + ');',
+            function (err, rowCount, rows) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.json(rows);
+                }
+            });
+        connection.execSql(request);
+    });
+
     router.get('/act/:act_id', function (req, res) {
         var actID = req.params['act_id'];
         var request = new Request('SELECT * FROM Acts WHERE Act_ID = ' + actID + ';',
@@ -310,7 +324,7 @@ pool.acquire(function (err, connection) {
         connection.execSql(request);
     });
 
-    router.get('/equipment/:venue_id', function (req, res) {
+    router.get('/equipment/venue/:venue_id', function (req, res) {
         var venueID = req.params['venue_id'];
         var request = new Request('SELECT * FROM Equipment WHERE Ven_ID = ' + venueID + ' ;',
             function (err, rowCount, rows) {
@@ -484,6 +498,20 @@ pool.acquire(function (err, connection) {
         connection.execSql(request);
     });
 
+    router.get('/promoters/act/:act_id', function(req, res) {
+        var actID = req.params['act_id'];
+        var request = new Request('SELECT * FROM Promoter WHERE Pro_ID IN (SELECT DISTINCT Pro_ID FROM Have WHERE Act_ID = '
+            + actID + ');',
+            function(err, rowCount, rows) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.json(rows);
+                }
+            });
+        connection.execSql(request);
+    });
+
     router.get('/promoter/:promoter_id', function (req, res) {
         var promoterID = req.params['promoter_id'];
         var request = new Request('SELECT * FROM Promoter WHERE Pro_ID = ' + promoterID + ';',
@@ -562,6 +590,43 @@ pool.acquire(function (err, connection) {
                     res.json(rows);
                 }
             });
+        connection.execSql(request);
+    });
+
+    router.get('/shows/act/:act_id', function(req,res) {
+        var actID = req.params['act_id'];
+        var request = new Request('SELECT * FROM Shows WHERE Show_ID IN (SELECT DISTINCT Show_ID FROM Play WHERE Act_ID = ' +
+        actID + ');', function(err, rowCount, rows) {
+            if(err) {
+                console.log(err);
+            } else {
+                res.json(rows);
+            }
+        });
+        connection.execSql(request);
+    });
+
+    router.get('/shows/venue/:venue_id', function(req,res) {
+        var venueID = req.params['venue_id'];
+        var request = new Request('SELECT * FROM Shows WHERE Ven_ID = ' + venueID + ';', function(err, rowCount, rows) {
+            if(err) {
+                console.log(err);
+            } else {
+                res.json(rows);
+            }
+        });
+        connection.execSql(request);
+    });
+
+    router.get('/shows/tour/:tour_id', function(req,res) {
+        var tourID = req.params['tour_id'];
+        var request = new Request('SELECT * FROM Shows WHERE Tour_ID = ' + tourID + ';', function(err, rowCount, rows) {
+            if(err) {
+                console.log(err);
+            } else {
+                res.json(rows);
+            }
+        });
         connection.execSql(request);
     });
 
@@ -781,6 +846,20 @@ pool.acquire(function (err, connection) {
                 } else {
                     res.json(rows);
                 }
+            });
+        connection.execSql(request);
+    });
+
+    router.get('/venues/equipment/:equipment_id', function (req, res) {
+       var equipmentID = req.params['equipment_id'];
+        var request = new Request('SELECT * FROM Venue WHERE Ven_ID IN (SELECT DISTINCT Ven_ID FROM Equipment WHERE ' +
+            'Eqp_ID = ' + equipmentID + ');',
+            function (err, rowCount, rows) {
+               if (err) {
+                   console.log(err);
+               } else {
+                   res.json(rows);
+               }
             });
         connection.execSql(request);
     });

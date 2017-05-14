@@ -21,6 +21,19 @@ export class EquipmentService implements serviceInterface {
         });
         return result;
     }
+    getVenueEquipment(id) {
+        var result = [];
+        var count = 0;
+        this.http.get('/api/equipment/venue/' + id)
+            .map(res => res.json()).subscribe(response => {
+            for (let temp of response) {
+                result[count] = {equipmentID: temp[0].value, venueID: temp[1].value, condition: temp[2].value,
+                    type: temp[3].value, model: temp[4].value};
+                count++;
+            }
+        });
+        return result;
+    }
     create(record: Equipment) {
         return this.http.get('/api/equipment', this.mapToSchema(record))
             .map(res => res.json());

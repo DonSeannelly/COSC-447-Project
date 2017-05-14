@@ -52,10 +52,10 @@
       </td>
     </tr>
     <context-menu>
-      <ng-template contextMenuItem passive="true">
+      <ng-template contextMenuItem (execute)="switchContext($event.item.venueID, true)">
         <button class="context-link">View Related Equipment</button>
       </ng-template>
-      <ng-template contextMenuItem passive="true">
+      <ng-template contextMenuItem (execute)="switchContext($event.item.venueID, false)">
         <button class="context-link">View Shows</button>
       </ng-template>
     </context-menu>

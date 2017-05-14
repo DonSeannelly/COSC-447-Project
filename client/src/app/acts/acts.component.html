@@ -31,10 +31,10 @@
       </td>
     </tr>
     <context-menu>
-      <ng-template contextMenuItem passive="true">
+      <ng-template contextMenuItem (execute)="switchContext($event.item.actID, true)">
         <button class="context-link">View Related Shows</button>
       </ng-template>
-      <ng-template contextMenuItem passive="true">
+      <ng-template contextMenuItem (execute)="switchContext($event.item.actID, false)">
         <button class="context-link">View Promoter</button>
       </ng-template>
     </context-menu>

@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Equipment } from '../models/Equipment';
 import { EquipmentService } from './equipment.service';
 import {ContextMenuComponent} from "ngx-contextmenu";
@@ -13,9 +14,18 @@ export class EquipmentComponent implements OnInit {
   equipment: Equipment[];
   editID: number = -1;
 
-  constructor(public equipmentService: EquipmentService) {
-    this.equipment = equipmentService.get();
-  }
+  constructor(public equipmentService: EquipmentService, private route: ActivatedRoute, private router: Router) {
+    this.route.params.subscribe(params => {
+      var parent = params['parent'];
+      var id = params['id'];
+
+      if(parent === 'venue') {
+        this.equipment = equipmentService.getVenueEquipment(id);
+      } else {
+        this.equipment = equipmentService.get();
+      }
+    });
+}
 
   ngOnInit() {
   }
@@ -34,5 +44,8 @@ export class EquipmentComponent implements OnInit {
     this.equipmentService.remove(this.equipment[equipmentID]).subscribe();
   }
 
+  switchContext(id){
+    this.router.navigate(['venue','equipment',id]);
+  }
 }
 

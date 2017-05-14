@@ -27,7 +27,7 @@
       </td>
     </tr>
     <context-menu>
-      <ng-template contextMenuItem passive="true">
+      <ng-template contextMenuItem (execute)="switchContext($event.item.equipmentID)">
         <button class="context-link">View Related Venue</button>
       </ng-template>
     </context-menu>
