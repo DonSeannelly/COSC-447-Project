@@ -22,7 +22,7 @@ export class EmployeeService implements serviceInterface {
         return result;
     }
   create(record: Employee) {
-    return this.http.get('/api/employee', this.mapToSchema(record))
+    return this.http.post('/api/employee', this.mapToSchema(record))
         .map(res => res.json());
   }
   remove(id) {

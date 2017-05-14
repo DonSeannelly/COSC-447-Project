@@ -31,6 +31,25 @@
         <button class="context-link">View Related Venue</button>
       </ng-template>
     </context-menu>
+    <tr *ngIf="editNewEquipment">
+      <td>
+        <input [(ngModel)]="newEquipment.condition"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEquipment.type"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEquipment.model"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEquipment.venueID"/>
+      </td>
+      <td>
+        <button class="btn btn-success" (click)="createNewEquipment()">Save</button>
+        <button class="btn btn-danger" (click)="closeNewEquipmentDialog()">Cancel</button>
+      </td>
+    </tr>
   </tbody>
 </table>
+<button class="btn btn-success" *ngIf="!editNewEquipment" (click)="openNewEquipmentDialog()">New Equipment</button>
 

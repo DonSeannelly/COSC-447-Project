@@ -13,6 +13,8 @@ export class PromotersComponent implements OnInit {
 
     promoters: Promoter[];
     editID: number = -1;
+    editNewPromoter: boolean;
+    newPromoter: Promoter;
 
     constructor(public promoterService: PromoterService, private route: ActivatedRoute, private router: Router) {
         this.route.params.subscribe(params => {
@@ -24,6 +26,7 @@ export class PromotersComponent implements OnInit {
                 this.promoters = promoterService.get();
             }
         });
+        this.newPromoter = new Promoter("","","","","",null);
     }
 
     ngOnInit() {
@@ -45,5 +48,19 @@ export class PromotersComponent implements OnInit {
 
     switchContext(id) {
         this.router.navigate(['acts','promoter',id]);
+    }
+    openNewPromoterDialog() {
+        this.editNewPromoter = true;
+    }
+    closeNewPromoterDialog() {
+        this.editNewPromoter = false;
+    }
+    createNewPromoter() {
+        this.promoterService.create(this.newPromoter).subscribe(res => {
+            this.newPromoter.promoterID = res.id;
+            this.closeNewPromoterDialog();
+            this.promoters.push(this.newPromoter);
+            this.newPromoter = new Promoter("","","","","",null);
+        });
     }
 }

@@ -35,7 +35,7 @@ export class EquipmentService implements serviceInterface {
         return result;
     }
     create(record: Equipment) {
-        return this.http.get('/api/equipment', this.mapToSchema(record))
+        return this.http.post('/api/equipment', this.mapToSchema(record))
             .map(res => res.json());
     }
     remove(id) {

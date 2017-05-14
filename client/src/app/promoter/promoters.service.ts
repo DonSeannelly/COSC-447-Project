@@ -34,7 +34,7 @@ export class PromoterService implements serviceInterface {
         return result;
     }
     create(record: Promoter) {
-        return this.http.get('/api/promoter', this.mapToSchema(record))
+        return this.http.post('/api/promoter', this.mapToSchema(record))
             .map(res => res.json());
     }
     remove(id) {

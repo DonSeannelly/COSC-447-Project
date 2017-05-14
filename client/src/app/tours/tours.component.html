@@ -15,6 +15,15 @@
         <button class="btn btn-danger" (click)="remove(i, t.tourID)">Delete</button>
       </td>
     </tr>
+    <tr *ngIf="editNewTour">
+      <td>
+        <input [(ngModel)]="newTour.title"/>
+      </td>
+      <td>
+        <button class="btn btn-success" (click)="createNewTour()">Save</button>
+        <button class="btn btn-danger" (click)="closeNewTourDialog()">Cancel</button>
+      </td>
+    </tr>
     <context-menu>
       <ng-template contextMenuItem (execute)="switchContext($event.item.tourID)">
         <button class="context-link">View Related Shows</button>
@@ -22,3 +31,4 @@
     </context-menu>
   </tbody>
 </table>
+<button class="btn btn-success" *ngIf="!editNewTour" (click)="openNewTourDialog()">New Tour</button>

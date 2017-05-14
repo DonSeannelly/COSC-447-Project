@@ -13,9 +13,12 @@ export class ToursComponent implements OnInit {
 
   tours: Tour[];
   editID: number = -1;
+  newTour: Tour;
+  editNewTour: boolean;
 
   constructor(public tourService: ToursService, private router: Router) {
-    this.tours = tourService.get();
+    this.tours = tourService.get();    
+    this.newTour = new Tour("",null);
   }
 
   ngOnInit() {
@@ -37,4 +40,18 @@ export class ToursComponent implements OnInit {
   switchContext(id) {
     this.router.navigate(['shows','tours',id])
   }
+      openNewTourDialog() {
+        this.editNewTour = true;
+    }
+    closeNewTourDialog() {
+        this.editNewTour = false;
+    }
+    createNewTour() {
+        this.tourService.create(this.newTour).subscribe(res => {
+            this.newTour.tourID = res.id;
+            this.closeNewTourDialog();
+            this.tours.push(this.newTour);
+            this.newTour = new Tour("",null);
+        });
+    }
 }

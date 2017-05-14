@@ -13,6 +13,8 @@ export class EquipmentComponent implements OnInit {
 
   equipment: Equipment[];
   editID: number = -1;
+  editNewEquipment: boolean;
+  newEquipment: Equipment;
 
   constructor(public equipmentService: EquipmentService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
@@ -25,6 +27,7 @@ export class EquipmentComponent implements OnInit {
         this.equipment = equipmentService.get();
       }
     });
+    this.newEquipment = new Equipment("","","",null,null);
 }
 
   ngOnInit() {
@@ -47,5 +50,19 @@ export class EquipmentComponent implements OnInit {
   switchContext(id){
     this.router.navigate(['venue','equipment',id]);
   }
+  openNewEquipmentDialog() {
+        this.editNewEquipment = true;
+    }
+    closeNewEquipmentDialog() {
+        this.editNewEquipment = false;
+    }
+    createNewEquipment() {
+        this.equipmentService.create(this.newEquipment).subscribe(res => {
+            this.newEquipment.equipmentID = res.id;
+            this.closeNewEquipmentDialog();
+            this.equipment.push(this.newEquipment);
+            this.newEquipment = new Equipment("","","",null,null);
+        });
+    }
 }
 

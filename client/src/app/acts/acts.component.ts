@@ -11,6 +11,8 @@ import {ContextMenuComponent} from 'ngx-contextmenu';
 export class ActsComponent implements OnInit {
     @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
+    editNewAct: boolean;
+    newAct: Act;
     acts: Act[];
     editID: number = -1;
 
@@ -25,6 +27,7 @@ export class ActsComponent implements OnInit {
                 this.acts = actService.get();
             }
         });
+        this.newAct = new Act("","","","","",null);
     }
 
     ngOnInit() {
@@ -50,5 +53,20 @@ export class ActsComponent implements OnInit {
         } else {
             this.router.navigate(['promoter','act',id]);
         }
+    }
+
+    openNewActDialog() {
+        this.editNewAct = true;
+    }
+    closeNewActDialog() {
+        this.editNewAct = false;
+    }
+    createNewAct() {
+        this.actService.create(this.newAct).subscribe(res => {
+            this.newAct.actID = res.id;
+            this.closeNewActDialog();
+            this.acts.push(this.newAct);
+            this.newAct = new Act("","","","","",null);
+        });
     }
 }

@@ -47,5 +47,40 @@
         <button class="btn btn-danger" (click)="remove(i,e.employeeID)">Delete</button>
       </td>
     </tr>
+    <tr *ngIf="editNewEmployee">
+      <td>
+        <input [(ngModel)]="newEmployee.firstName"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.middleInitial"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.lastName"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.position"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.phone"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.zip"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.state"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.city"/>
+      </td>
+      <td>
+        <input [(ngModel)]="newEmployee.street"/>
+      </td>
+      <td>
+        <button class="btn btn-success" (click)="createNewEmployee()">Save</button>
+        <button class="btn btn-danger" (click)="closeNewEmployeeDialog()">Cancel</button>
+      </td>
+    </tr>
   </tbody>
 </table>
+
+<button class="btn btn-success" *ngIf="!editNewEmployee" (click)="openNewEmployeeDialog()">New Employee</button>

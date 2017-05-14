@@ -35,7 +35,7 @@ export class ActService implements serviceInterface {
         return result;
     }
     create(record: Act) {
-        return this.http.get('/api/act', this.mapToSchema(record))
+        return this.http.post('/api/act', this.mapForCreation(record))
             .map(res => res.json());
     }
     remove(id) {
@@ -49,6 +49,16 @@ export class ActService implements serviceInterface {
     mapToSchema(record: Act) {
       return {
         Act_ID: record.actID,
+        Name: record.name,
+        Email: record.email,
+        Genre: record.genre,
+        City: record.city,
+        State: record.state
+      };
+    }
+    mapForCreation(record: Act) {
+      return {
+        Act_ID: null,
         Name: record.name,
         Email: record.email,
         Genre: record.genre,

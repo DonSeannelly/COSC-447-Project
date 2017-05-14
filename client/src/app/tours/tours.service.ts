@@ -21,7 +21,7 @@ export class ToursService implements serviceInterface {
         return result;
     }
   create(record: Tour) {
-    return this.http.get('/api/tour', this.mapToSchema(record))
+    return this.http.post('/api/tour', this.mapToSchema(record))
         .map(res => res.json());
   }
   remove(id) {
