@@ -70,14 +70,16 @@ pool.acquire(function (err, connection) {
     });
     router.post('/act', function (req, res) {
         var request = new Request('INSERT INTO Acts (Name, Email, Genre, City, State)' +
-            ' VALUES (@Name, @Email, @Genre, @City, @State);',
+            ' VALUES (@Name, @Email, @Genre, @City, @State); SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json({message: 'Act Added'})
                 }
             });
+
+        request.on('row', function(columns) {
+           res.json({id: columns[0].value});
+        });
 
         request.addParameter('Name', TYPES.VarChar, req.body['Name']);
         request.addParameter('Email', TYPES.VarChar, req.body['Email']);
@@ -230,14 +232,16 @@ pool.acquire(function (err, connection) {
 
     router.post('/employee', function (req, res) {
         var request = new Request('INSERT INTO Employee (Position, Phone, Fname, Lname, Minit, Zip, State, City, Street)' +
-            'VALUES (@Position, @Phone, @Fname, @Lname, @Minit, @Zip, @State, @City, @Street);',
+            'VALUES (@Position, @Phone, @Fname, @Lname, @Minit, @Zip, @State, @City, @Street); SELECT @@identity',
             function (err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.status(200).json({message: 'Employee added'})
                 }
             });
+
+        request.on('row', function(columns) {
+            res.json({id: columns[0].value});
+        });
 
         request.addParameter('Position', TYPES.VarChar, req.body['Position']);
         request.addParameter('Phone', TYPES.VarChar, req.body['Phone']);
@@ -334,14 +338,16 @@ pool.acquire(function (err, connection) {
 
     router.post('/equipment', function (req, res) {
         var request = new Request('INSERT INTO Equpiment (Ven_ID, Condition, Type, Model)' +
-            'VALUES (@Ven_ID, @Condition, @Type, @Model);',
+            'VALUES (@Ven_ID, @Condition, @Type, @Model); SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json({message: 'Equipment Added'});
                 }
             });
+
+        request.on('row', function(columns) {
+            res.json({id: columns[0].value});
+        });
 
         request.addParameter('Ven_ID', TYPES.Int, req.body['Ven_ID']);
         request.addParameter('Condition', TYPES.VarChar, req.body['Condition']);
@@ -412,14 +418,17 @@ pool.acquire(function (err, connection) {
 
     router.post('/housing', function (req, res) {
         var request = new Request('INSERT INTO Housing (Ven_ID, Capacity, Price, Complex, POC) VALUES' +
-            '(@Ven_ID, @Capacity, @Price, @Complex, @POC);',
+            '(@Ven_ID, @Capacity, @Price, @Complex, @POC); SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err)
-                } else {
-                    res.json({message: 'Housing Added'});
                 }
             });
+
+        request.on('row', function(columns) {
+            res.json({id: columns[0].value});
+        });
+
         request.addParameter('Ven_ID', TYPES.Int, req.body['Ven_ID']);
         request.addParameter('Capacity', TYPES.VarChar, req.body['Capacity']);
         request.addParameter('Price', TYPES.VarChar, req.body['Price']);
@@ -490,14 +499,17 @@ pool.acquire(function (err, connection) {
 
     router.post('/promoter', function (req, res) {
         var request = new Request('INSERT INTO Promoter (Fname, Lname, Minit, Phone, Organization)' +
-            'VALUES (@Fname, @Lname, @Minit, @Phone, @Oranization);',
+            'VALUES (@Fname, @Lname, @Minit, @Phone, @Oranization); SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json({message: 'Promoter Added'});
                 }
             });
+
+        request.on('row', function(columns) {
+            res.json({id: columns[0].value});
+        });
+
         request.addParameter('Fname', TYPES.VarChar, req.body['Fname']);
         request.addParameter('Lname', TYPES.VarChar, req.body['Lname']);
         request.addParameter('Minit', TYPES.VarChar, req.body['Minit']);
@@ -568,14 +580,17 @@ pool.acquire(function (err, connection) {
 
     router.post('/show', function (req, res) {
         var request = new Request('INSERT INTO Shows (Start_Time, End_Time, Doors_Time, Expected_Sales, Ven_ID, Tour_ID' +
-            'VALUES (@Start_Time, @End_Time, @Doors_Time, @Expected_Sales, @Ven_ID, @Tour_ID);',
+            'VALUES (@Start_Time, @End_Time, @Doors_Time, @Expected_Sales, @Ven_ID, @Tour_ID); SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json({message: 'Show Added'});
                 }
             });
+
+        request.on('row', function(columns) {
+            res.json({id: columns[0].value});
+        });
+
         request.addParameter('Start_Time', TYPES.Time, req.body['Start_Time']);
         request.addParameter('End_Time', TYPES.Time, req.body['End_Time']);
         request.addParameter('Doors_Time', TYPES.Time, req.body['Doors_Time']);
@@ -714,14 +729,17 @@ pool.acquire(function (err, connection) {
     });
 
     router.post('/tour', function (req, res) {
-        var request = new Request('INSERT INTO Tours (Title) VALUES (@Title);',
+        var request = new Request('INSERT INTO Tours (Title) VALUES (@Title); SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json({message: 'Tour added'});
                 }
             });
+
+        request.on('row', function(columns) {
+            res.json({id: columns[0].value});
+        });
+
         request.addParameter('Title', TYPES.VarChar, req.body['Title']);
 
         connection.execSql(request);
@@ -782,14 +800,17 @@ pool.acquire(function (err, connection) {
 
     router.post('/venue', function (req, res) {
         var request = new Request('INSERT INTO Venue (POC, Capacity, Name, City, State, Street, ZIP, Type,' +
-            'Time_Open, Time_Close) VALUES (@POC, @Capacity, @Name, @City, @State, @Street, @ZIP, @Time_Open, @Time_Close);',
+            'Time_Open, Time_Close) VALUES (@POC, @Capacity, @Name, @City, @State, @Street, @ZIP, @Time_Open, @Time_Close);' +
+            'SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json({message: 'Venue Added'});
                 }
             });
+
+        request.on('row', function(columns) {
+            res.json({id: columns[0].value});
+        });
         request.addParameter('POC', TYPES.VarChar, req.body['POC']);
         request.addParameter('Capacity', TYPES.Int, req.body['Capacity']);
         request.addParameter('Name', TYPES.VarChar, req.body['Name']);
