@@ -33,9 +33,9 @@ export class ToursComponent implements OnInit {
     this.tourService.update(this.tours[index]).subscribe();
   }
 
-  remove(index: number, toursID: number) {
+  remove(index: number, tourID: number) {
     this.tours.splice(index, 1);
-    this.tourService.remove(this.tours[toursID]).subscribe();
+    this.tourService.remove(tourID).subscribe();
   }
   switchContext(id) {
     this.router.navigate(['shows','tours',id])

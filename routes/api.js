@@ -351,7 +351,7 @@ pool.acquire(function (err, connection) {
     });
 
     router.post('/equipment', function (req, res) {
-        var request = new Request('INSERT INTO Equpiment (Ven_ID, Condition, Type, Model)' +
+        var request = new Request('INSERT INTO Equipment (Ven_ID, Condition, Type, Model)' +
             'VALUES (@Ven_ID, @Condition, @Type, @Model); SELECT @@identity;',
             function (err) {
                 if (err) {
@@ -527,7 +527,7 @@ pool.acquire(function (err, connection) {
 
     router.post('/promoter', function (req, res) {
         var request = new Request('INSERT INTO Promoter (Fname, Lname, Minit, Phone, Organization)' +
-            'VALUES (@Fname, @Lname, @Minit, @Phone, @Oranization); SELECT @@identity;',
+            'VALUES (@Fname, @Lname, @Minit, @Phone, @Organization); SELECT @@identity;',
             function (err) {
                 if (err) {
                     console.log(err);
@@ -826,6 +826,7 @@ pool.acquire(function (err, connection) {
     });
 
     router.delete('/tour/:tour_id', function (req, res) {
+        console.log(req.params['tour_id']);
         var tourID = req.params['tour_id'];
         var request = new Request('DELETE FROM Tours WHERE Tour_ID = ' + tourID + ';',
             function (err) {

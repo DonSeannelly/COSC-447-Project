@@ -43,7 +43,7 @@ export class PromotersComponent implements OnInit {
 
     remove(index: number, promoterID: number) {
         this.promoters.splice(index, 1);
-        this.promoterService.remove(this.promoters[promoterID]).subscribe();
+        this.promoterService.remove(promoterID).subscribe();
     }
 
     switchContext(id) {

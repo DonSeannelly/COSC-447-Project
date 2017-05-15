@@ -32,7 +32,7 @@ export class EmployeeComponent implements OnInit {
 
   remove(index: number, employeeID: number) {
     this.employees.splice(index, 1);
-    this.employeeService.remove(this.employees[employeeID]).subscribe();
+    this.employeeService.remove(employeeID).subscribe();
   }
     openNewEmployeeDialog() {
         this.editNewEmployee = true;

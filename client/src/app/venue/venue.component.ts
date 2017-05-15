@@ -41,7 +41,7 @@ export class VenueComponent implements OnInit {
 
   remove(index: number, venueID: number) {
     this.venues.splice(index, 1);
-    this.venueService.remove(this.venues[venueID]).subscribe();
+    this.venueService.remove(venueID).subscribe();
   }
   switchContext(id: number, isEquipment: boolean) {
     if(isEquipment) {

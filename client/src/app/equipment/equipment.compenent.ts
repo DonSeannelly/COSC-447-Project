@@ -44,7 +44,7 @@ export class EquipmentComponent implements OnInit {
 
   remove(index: number, equipmentID: number) {
     this.equipment.splice(index, 1);
-    this.equipmentService.remove(this.equipment[equipmentID]).subscribe();
+    this.equipmentService.remove(equipmentID).subscribe();
   }
 
   switchContext(id){
